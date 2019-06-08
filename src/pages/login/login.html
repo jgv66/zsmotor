@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+    <ion-title>Ingresar al sistema</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    
+    <img src="./assets/imgs/auto-00{{auto_arriba}}.jpg" alt="">
+
+    <p>Acceda con los datos del sistema.</p><br>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Correo electrónico</ion-label>
+            <ion-input type="text" name="rutocorreo" [(ngModel)]="rutocorreo" required></ion-input>
+        </ion-item>
+                
+        <ion-item>
+            <ion-label floating>Los 5 primeros números de su rut...</ion-label>
+            <ion-input type="password" name="clave" [(ngModel)]="clave" required></ion-input>
+        </ion-item>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <button ion-button block small (click)="salir()" >Salir</button>
+                </ion-col>
+                <ion-col col-8>
+                    <button ion-button block small (click)="logearme(rutocorreo,clave)" >Ingresar</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+            
+    </ion-list>
+   
+    <img src="./assets/imgs/auto-00{{auto_abajo}}.jpg" alt="">
+
+</ion-content>>

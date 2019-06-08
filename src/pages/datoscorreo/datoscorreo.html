@@ -1,0 +1,52 @@
+
+<ion-header>
+
+    <ion-navbar>
+
+      <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+
+      <!--ion-buttons start>
+          <button ion-button (click)="salir()">Salir</button>
+      </ion-buttons-->
+
+      <ion-title>Envio de correo</ion-title>
+
+    </ion-navbar>
+  
+</ion-header>
+
+<ion-content padding>
+
+    <p>Indique los datos para enviar el correo solicitado.</p><br>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label stacked >Para : </ion-label>
+            <ion-input type="email" name="emailTo" [(ngModel)]="emailTo" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+                <ion-label stacked>Copia : </ion-label>
+            <ion-input type="email" name="emailCc" [(ngModel)]="emailCc" required></ion-input>
+        </ion-item>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-3>
+                    <button ion-button block small (click)="salir()" >Salir</button>
+                </ion-col>
+                <ion-col col-9>
+                    <button ion-button block small item-end icon-only (click)="enviar()">
+                        <ion-icon name="send" ></ion-icon>
+                        Enviar el correo
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+            
+    </ion-list>
+   
+    <img src="./assets/imgs/logo-kinetik.jpg" class="logo-kinetik">
+
+</ion-content>

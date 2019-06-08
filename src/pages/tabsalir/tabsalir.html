@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-navbar>
+    <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+    <ion-title>Salir de Toma de Pedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <p class="texto-salida">Esto ha sido todo por hoy?</p>
+    <p>Será hasta la próxima, que tengas una excelente jornada !!</p>
+
+  </ion-list>
+    
+  <button ion-button block color="primary" (click)="salirDelSistema()">Salir</button>
+
+  <ion-item no-lines>
+      <ion-label>No recuerdes mis datos</ion-label>
+      <ion-checkbox  [(ngModel)]="norecordar" ></ion-checkbox>
+  </ion-item>
+
+  <img src="./assets/imgs/auto-003.jpg" class="logo-salir">
+
+  <img src="./assets/imgs/logo-kinetik.jpg" class="logo-kinetik">
+
+</ion-content>

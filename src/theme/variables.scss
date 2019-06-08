@@ -1,0 +1,49 @@
+
+$font-path: "../assets/fonts";
+
+$app-direction: ltr;
+
+@import "ionic.globals";
+
+/*
+indigo
+<color name="primaryColor">#5c6bc0</color>
+<color name="primaryLightColor">#8e99f3</color>
+<color name="primaryDarkColor">#26418f</color>
+<color name="secondaryColor">#ce93d8</color>
+<color name="secondaryLightColor">#ffc4ff</color>
+<color name="secondaryDarkColor">#9c64a6</color>
+<color name="primaryTextColor">#ffffff</color>
+<color name="secondaryTextColor">#000000</color>
+
+  primary:    #5c6bc0,
+  secondary:  #ce93d8,
+  danger:     #f53d3d,
+  light:      #8e99f3,
+  dark:       #26418f,
+  aviso:      #f9603a,
+  indigo:   #26418f
+
+
+*/
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  aviso:      #f9603a,
+  indigo:   #26418f
+);
+
+@import "ionic.theme.default";
+
+@import "ionic.ionicons";
+
+@import "roboto";
+@import "noto-sans";
+
+.button-md {
+  text-transform: none!important;
+}

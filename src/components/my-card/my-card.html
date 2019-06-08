@@ -1,0 +1,52 @@
+
+<ion-card-header>
+    <ion-grid>
+
+        <ion-row>
+            <ion-col col-4><h4 text-right >Código :</h4></ion-col>
+            <ion-col col-8><h4><b>{{ xliente.codigo }}</b></h4></ion-col>
+        </ion-row>
+
+        <ion-row  *ngIf=" xliente.sucursal.trim() != '' || xliente.tiposuc == 'suc' " >
+            <ion-col col-4><h4 text-right >Sucursal :</h4></ion-col>
+            <ion-col col-5><h4><b>{{ xliente.sucursal }}</b></h4></ion-col>
+            <ion-col col-3 *ngIf=" xliente.tiposuc == 'suc' " text-center >
+                    <ion-badge color="danger" item-end >Sucursal</ion-badge>
+                </ion-col>
+            </ion-row>
+        <ion-row>
+            <ion-col col-4><h4 text-right >Razón Soc.:</h4></ion-col>
+            <ion-col col-8 text-wrap ><h4><b>{{ xliente.razonsocial }}</b></h4></ion-col>
+        </ion-row>
+
+      </ion-grid>
+</ion-card-header>
+
+<ion-card-content>
+  <table>
+    <tr>
+        <td text-right><p>Dirección :</p></td>
+        <td><p><b>{{ xliente.direccion }}</b></p></td>
+    </tr>
+    <tr>
+        <td text-right><p>Comuna :</p></td>
+        <td><p><b>{{ xliente.comuna }}</b></p></td>
+    </tr>
+    <tr>
+        <td text-right><p>Ciudad :</p></td>
+        <td><p><b>{{ xliente.ciudad }}</b></p></td>
+    </tr>
+    <tr *ngIf=" xliente.vendedor.trim() != '' "   >
+        <td text-right><p>Vendedor ({{xliente.vendedor}}) :</p></td>
+        <td><p><b>{{ xliente.nombrevendedor }}</b></p></td>
+    </tr>
+    <tr *ngIf=" xliente.vendedor.trim() == '' "   >
+        <td text-right><p>Vendedor (n/a) :</p></td>
+        <td><p><b>No/Asignado</b></p></td>
+    </tr>
+    <tr>
+        <td text-right><p>Lista ({{ xliente.listaprecio }}) :</p></td>
+        <td><p><b>{{ xliente.nombrelista }}</b></p></td>
+    </tr>
+  </table>  
+</ion-card-content>

@@ -1,0 +1,111 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+      <ion-title>Detalle del documento</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-list>
+  
+        <ion-item color="danger">
+          <table>
+            <tr>
+                <td text-right><p>Docto. y Nro. :</p></td>
+                <td text-nowrap><p><b>{{ documento.tipo }} N° {{ documento.numero }}</b></p></td>
+            </tr>
+            <tr>
+                <td text-right><p>Fecha :</p></td>
+                <td text-nowrap><p><b>{{ documento.emision }}</b></p></td>
+            </tr>
+            <tr>
+                <td text-right><p>Monto :</p></td>
+                <td text-nowrap><p><b>${{ documento.monto | number:0 }}</b></p></td>
+            </tr>
+            <tr>
+              <td text-right><p>Código :</p></td>
+              <td><p><b>{{ cliente.codigo }}</b></p></td>
+            </tr>
+            <tr *ngIf=" cliente.sucursal.trim() != '' ">
+                <td text-right><p>Sucursal :</p></td>
+                <td><p><b>{{ cliente.sucursal }}</b></p></td>
+            </tr>
+            <tr>
+                <td text-right><p>Razon Social :</p></td>
+                <td text-nowrap><p><b>{{ cliente.razonsocial }}</b></p></td>
+            </tr>
+            <tr>
+                <td text-right><p>Vend.Asig. (<b>{{ cliente.vendedor }}</b>):</p></td>
+                <td text-nowrap><p><b>{{ cliente.nombrevendedor }}</b></p></td>
+            </tr>
+            </table>
+      </ion-item>
+
+      <ion-item-sliding  *ngFor="let linea of detalle">
+        
+        <ion-item>
+
+          <ion-grid>
+
+            <ion-row>
+                <ion-col text-right col-3>
+                    <p>Código :</p>
+                </ion-col>
+                <ion-col text-left col-6>
+                    <p><b>{{ linea.codigo }}</b></p>
+                </ion-col>
+                <ion-col text-left col-3>
+                    <p>Bod: <b>{{ linea.bodega }}</b></p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col text-right col-3>
+                    <p>Descrip.:</p>
+                </ion-col>
+                <ion-col text-wrap>
+                    <p><b>{{ linea.descrip }}</b></p>
+                </ion-col>
+            </ion-row>
+                    
+            <ion-row>
+                <ion-col text-right col-3>
+                    <p>Precio :</p>
+                </ion-col>
+                <ion-col text-right col-3>
+                    <b><p>${{ linea.precio | number:0 }}</p></b>
+                </ion-col>
+                <ion-col text-center col-1>
+                    <p>x</p>
+                </ion-col>
+                <ion-col text-right col-1>
+                    <b><p>{{ linea.cantidad }}</p></b>
+                </ion-col>
+                <ion-col text-center col-1>
+                    <p>=</p>
+                </ion-col>
+                <ion-col text-right col-3>
+                    <b><p>$ {{ linea.precio * linea.cantidad | number:0 }}</p></b>
+                </ion-col>
+            </ion-row>
+
+          </ion-grid>            
+
+        </ion-item>
+
+        <ion-item-options side="right">
+            <button ion-button color="secondary" (click)="infoProd(linea.codigo,cliente.codigo,cliente.sucursal,linea.empresa,linea.descrip)">
+                <ion-icon name="information-circle"></ion-icon>
+                Info     
+            </button>
+        </ion-item-options>
+
+      </ion-item-sliding>
+
+    </ion-list>
+
+  <ion-content padding>

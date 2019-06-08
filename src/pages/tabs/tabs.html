@@ -1,0 +1,6 @@
+<ion-tabs selectedIndex="0">
+  <ion-tab [root]="tab1Root" [rootParams]="usuario" tabTitle="Buscar"    tabIcon="search"> </ion-tab>  
+  <ion-tab [root]="tab2Root" [rootParams]="usuario" tabTitle="Mi carro" tabIcon="cart" [tabBadge]="cuantosProductosEnCarro()" tabBadgeStyle="primary"></ion-tab> >
+  <!--ion-tab [root]="tab3Root" [rootParams]="usuario" tabTitle="Cta.Cte"   tabIcon="card"></ion-tab-->
+  <ion-tab [root]="tab4Root" [rootParams]="usuario" tabTitle="Salir"     tabIcon="log-out"> </ion-tab>
+</ion-tabs>

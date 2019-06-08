@@ -1,0 +1,149 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+    <ion-title>Documentos impagos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+      <ion-item>
+      <table>
+        <tr>
+          <td text-right><p>Código :</p></td>
+          <td><p><b>{{ cliente.codigo }}</b></p></td>
+        </tr>
+        <tr *ngIf=" cliente.sucursal.trim() != '' ">
+            <td text-right><p>Sucursal :</p></td>
+            <td><p><b>{{ cliente.sucursal }}</b></p></td>
+        </tr>
+        <tr>
+            <td text-right><p>Razon Social :</p></td>
+            <td text-nowrap><p><b>{{ cliente.razonsocial }}</b></p></td>
+        </tr>
+    </table>
+    </ion-item>
+
+    <ion-segment [(ngModel)]="impagos">
+        <ion-segment-button value="Vencidos"  >Vencidos  </ion-segment-button>
+        <ion-segment-button value="Por vencer">Por vencer</ion-segment-button>
+    </ion-segment>
+
+    <ion-item [ngSwitch]="impagos">
+
+        <ion-card *ngFor="let impago of Vencidos" (click)="muestraID( impago )"> 
+
+          <ion-grid padding-left *ngSwitchCase="'Vencidos'">
+            
+              <ion-row>
+                  <ion-col text-right col-5>
+                      <p>Docto. y Nro. :</p>
+                  </ion-col>
+                  <ion-col text-left>
+                      <p><b>{{ impago.tipo }} N° {{ impago.numero }}</b></p>
+                  </ion-col>
+              </ion-row>
+            
+              <ion-row >
+                  <ion-col text-right col-3>
+                      <p>Emisión :</p>
+                  </ion-col>
+                  <ion-col text-left col-4>
+                      <p><b>{{ impago.emision }}</b></p>
+                  </ion-col>
+              </ion-row>
+
+              <ion-row >
+                  <ion-col text-right col-3>
+                      <p>Vencto. :</p>
+                  </ion-col>
+                  <ion-col text-left col-4>
+                      <p><b>{{ impago.fultvenc }}</b></p>
+                  </ion-col>
+              </ion-row>
+              
+              <ion-row >
+                  <ion-col text-right col-3>
+                      <p>Monto :</p>
+                  </ion-col>
+                  <ion-col text-left col-5>
+                      <p><b>${{ impago.monto | number:0 }}</b></p>
+                  </ion-col>
+              </ion-row>
+              
+              <ion-row>
+                <ion-col text-right col-3>
+                    <p>Saldo :</p>
+                </ion-col>
+                <ion-col text-left col-5>
+                    <p><b>${{ impago.saldo | number:0 }}</b></p>
+                </ion-col>
+              </ion-row>
+
+          </ion-grid>
+
+        </ion-card>
+
+        <ion-card *ngFor="let impago of PorVencer" (click)="muestraID( impago )"> 
+
+            <ion-grid padding-left  *ngSwitchCase="'Por vencer'" >
+
+                <ion-row>
+                    <ion-col text-right col-5>
+                        <p>Docto. y Nro. :</p>
+                    </ion-col>
+                    <ion-col text-left>
+                        <p><b>{{ impago.tipo }} N° {{ impago.numero }}</b></p>
+                    </ion-col>
+                </ion-row>
+              
+                <ion-row >
+                    <ion-col text-right col-3>
+                        <p>Emisión :</p>
+                    </ion-col>
+                    <ion-col text-left col-4>
+                        <p><b>{{ impago.emision }}</b></p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row >
+                    <ion-col text-right col-3>
+                        <p>Vencto. :</p>
+                    </ion-col>
+                    <ion-col text-left col-4>
+                        <p><b>{{ impago.fultvenc }}</b></p>
+                    </ion-col>
+                </ion-row>
+                
+                <ion-row >
+                    <ion-col text-right col-3>
+                        <p>Monto :</p>
+                    </ion-col>
+                    <ion-col text-left col-5>
+                        <p><b>${{ impago.monto | number:0 }}</b></p>
+                    </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col text-right col-3>
+                    <p>Saldo :</p>
+                </ion-col>
+                <ion-col text-left col-5>
+                    <p><b>${{ impago.saldo | number:0 }}</b></p>
+                </ion-col>
+              </ion-row>
+            
+            </ion-grid>
+
+        </ion-card>
+
+      </ion-item>
+
+  </ion-list>
+
+</ion-content>

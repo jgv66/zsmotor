@@ -1,0 +1,109 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <img src="assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+      <ion-title>Pre-venta en curso</ion-title>
+    </ion-navbar>
+  
+</ion-header>
+  
+<ion-content padding>
+
+  <ion-list>
+
+        <button *ngIf=" totalCarrito > 0 " ion-button block color="primary" class="marginTop" >Total del Pedido: ${{ sumaCarrito() | number:0 }}</button>
+        <ion-item-sliding  *ngFor="let producto of carrito">
+            <ion-item>
+
+            <ion-grid>
+
+                <ion-row>
+                    <ion-col text-right col-3>
+                        <p>Código :</p>
+                    </ion-col>
+                    <ion-col text-left col-6>
+                        <p><b>{{ producto.codigo }}</b></p>
+                    </ion-col>
+                    <ion-col text-left col-3>
+                        <p>Bod: <b>{{ producto.bodega }}</b></p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col text-right col-3>
+                        <p>Descrip.:</p>
+                    </ion-col>
+                    <ion-col text-wrap>
+                        <p><b>{{ producto.descrip }}</b></p>
+                    </ion-col>
+                </ion-row>
+                    
+                <ion-row *ngIf=" producto.descuentomax <= 0 ">
+                    <ion-col text-right col-3>
+                        <p>Precio :</p>
+                    </ion-col>
+                    <ion-col text-right col-3>
+                        <b><p>${{ producto.precio | number:0 }}</p></b>
+                    </ion-col>
+                    <ion-col text-center col-1>
+                        <p>x</p>
+                    </ion-col>
+                    <ion-col text-right col-1>
+                        <b><p>{{ producto.cantidad }}</p></b>
+                    </ion-col>
+                    <ion-col text-center col-1>
+                        <p>=</p>
+                    </ion-col>
+                    <ion-col text-right col-3>
+                        <b><p>$ {{ producto.precio * producto.cantidad | number:0 }}</p></b>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row *ngIf=" producto.descuentomax > 0">
+                    <ion-col text-right col-3>
+                        <p>Mayorista :</p>
+                    </ion-col>
+                    <ion-col text-right col-3>
+                        <b><p>${{ producto.preciomayor | number:0 }}</p></b>
+                    </ion-col>
+                    <ion-col text-center col-1>
+                        <p>x</p>
+                    </ion-col>
+                    <ion-col text-right col-1>
+                        <b><p>{{ producto.cantidad }}</p></b>
+                    </ion-col>
+                    <ion-col text-center col-1>
+                        <p>=</p>
+                    </ion-col>
+                    <ion-col text-right col-3>
+                        <b><p>$ {{ producto.preciomayor * producto.cantidad | number:0 }}</p></b>
+                    </ion-col>
+                </ion-row>    
+                
+            </ion-grid>            
+
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger"    (click)="quitarDelPedido(producto)"><ion-icon name="trash">             </ion-icon>Borrar   </button>
+                <button ion-button color="primary"   (click)="cambiarCantidad(producto)"><ion-icon name="color-wand">        </ion-icon>Cantidad </button>
+                <button ion-button color="secondary" (click)="infoProducto(producto)">   <ion-icon name="information-circle"></ion-icon>Info     </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+        <div *ngIf=" totalCarrito > 0 ">
+            <br>
+            <button ion-button icon-left small (click)="observaciones()" class="x1">
+                <ion-icon name="create"></ion-icon>
+                Observaciones
+            </button>
+            <button ion-button icon-left small (click)="ordenDeCompra()">
+                <ion-icon name="attach"></ion-icon>
+                Orden de Compra
+            </button>
+            <acordeon mostrar="carrito" [carrito] ="carrito" [usuario]="usuario" [textoObs]="textoObs" [textoOcc]="ordendecompra" titulo="Acciones de grabación..."></acordeon>
+        </div>
+
+    </ion-list>
+  
+</ion-content>

@@ -1,0 +1,84 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+      <ion-title>Menu de configuración</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+
+        <ion-list-header text-left>
+            <p><b>Cliente activo...</b></p>
+        </ion-list-header>                 
+
+        <ion-item>
+            <table>
+              <tr>
+                <td text-right><p>Código :</p></td>
+                <td><p><b>{{  cliente.codigo }}</b></p></td>
+              </tr>
+              <tr *ngIf=" cliente.sucursal.trim() != '' ">
+                  <td text-right><p>Sucursal :</p></td>
+                  <td><p><b>{{ cliente.sucursal }}</b></p></td>
+              </tr>
+              <tr>
+                  <td text-right><p>Razon Social :</p></td>
+                  <td><p><b>{{ cliente.razonsocial }}</b></p></td>
+              </tr>
+              <tr>
+                  <td text-right><p>Dirección :</p></td>
+                  <td><p><b>{{ cliente.direccion }}</b></p></td>
+              </tr>
+              <tr>
+                  <td text-right><p>Comuna :</p></td>
+                  <td><p><b>{{ cliente.comuna }}</b></p></td>
+              </tr>
+              <tr>
+                  <td text-right><p>Ciudad :</p></td>
+                  <td><p><b>{{ cliente.ciudad }}</b></p></td>
+              </tr>
+              <tr *ngIf=" cliente.vendedor != '' ">
+                  <td text-right><p>Vend. (<b>{{ cliente.vendedor }}</b>) :</p></td>
+                  <td><p><b>{{ cliente.nombrevendedor }}</b></p></td>
+              </tr>
+              <tr *ngIf=" cliente.listaprecios != '' ">
+                  <td text-right><p>Lista (<b>{{ cliente.listaprecios }}</b>) :</p></td>
+                  <td><p><b>{{ cliente.nombrelista }}</b></p></td>
+              </tr>
+            </table>
+        </ion-item>
+
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>
+                  <button ion-button icon-left block small (click)="buscarOtroCliente()"><ion-icon name="color-wand"></ion-icon>
+                      Buscar cliente
+                  </button>
+                </ion-col>
+
+                <ion-col col-7 *ngIf=" cliente.codigo.trim() != '' ">
+                    <button ion-button icon-left block small (click)="consultarImpagos( cliente )"><ion-icon name="card"></ion-icon>
+                    Pendientes
+                  </button>
+                </ion-col>
+                <ion-col col-7 *ngIf=" cliente.codigo.trim() == '' ">
+                    <button ion-button icon-left block small disabled><ion-icon name="card"></ion-icon>
+                    Pendientes
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+
+    </ion-list>
+
+    <acordeon mostrar="filtros"   [config] ="config"  titulo="Filtros en búsquedas..."></acordeon>
+    <acordeon mostrar="ordenar"   [config] ="config"  titulo="Orden al desplegar..."  ></acordeon>
+    <acordeon mostrar="modalidad" [usuario]="usuario" titulo="Modalidad y usuario..." ></acordeon>
+
+</ion-content>
+

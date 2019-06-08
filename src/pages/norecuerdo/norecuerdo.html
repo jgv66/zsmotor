@@ -1,0 +1,27 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+    <ion-title>No recuerdo mis datos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <p>Por favor, envíenme un correo.</p>
+  <p>No recuerdo mis datos de usuario y clave para ingresar...</p><br>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Mi Email</ion-label>
+      <ion-input type="text" name="rutocorreo" [(ngModel)]="rutocorreo" required></ion-input>
+    </ion-item>
+  
+  </ion-list>
+
+  <button (click)="enviarCorreo(rutocorreo)" ion-button block color="light" class="marginTop" >Buscar usuario y enviar correo</button>
+
+</ion-content>

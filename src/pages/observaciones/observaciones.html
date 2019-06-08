@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+    <ion-title>Observaciones</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <p>Indique las observaciones que desea agregar al documento o correo.</p><br>
+
+  <ion-list>
+
+      <ion-item>
+          <ion-textarea type="text" [(ngModel)]="textoObs" required clearInput rows=13></ion-textarea >
+      </ion-item>
+
+      <ion-grid>
+          <ion-row>
+              <ion-col col-3>
+                  <button ion-button block small (click)="salir()" >Salir</button>
+              </ion-col>
+              <ion-col col-9>
+                  <button ion-button block small item-end icon-only (click)="enviar()">
+                      <ion-icon name="send" ></ion-icon>
+                      Guardar observación
+                  </button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+          
+  </ion-list>
+ 
+  <img src="./assets/imgs/logo-kinetik.jpg" class="logo-kinetik">
+
+</ion-content>

@@ -1,0 +1,101 @@
+
+<ion-header>
+
+        <ion-navbar>
+          <img src="./assets/imgs/logo-zs.png" alt="" class="navbar-img">        
+          <ion-title>Vtas.Producto/Cliente</ion-title>
+        </ion-navbar>
+      
+</ion-header>
+    
+<ion-content padding>
+    
+    <ion-list>
+    
+        <ion-item>
+            <table>
+                <tr>
+                    <td text-right><p>Código :</p></td>
+                    <td><p><b>{{ codigo }}</b></p></td>
+                </tr>
+                <tr>
+                    <td text-right><p>Descripción :</p></td>
+                    <td><p><b>{{ descrip }}</b></p></td>
+                </tr>
+            </table>
+        </ion-item>
+    
+        <ion-item  >
+
+        <ion-card *ngFor="let registro of registros">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col text-right col-5>
+                        <p>Docto. y Nro. :</p>
+                    </ion-col>
+                    <ion-col text-left>
+                        <p><b>{{ registro.tipo }} N° {{ registro.numero }}</b></p>
+                    </ion-col>
+                </ion-row>
+            
+                <ion-row >
+                    <ion-col text-right col-4>
+                        <p>Emisión :</p>
+                    </ion-col>
+                    <ion-col text-left col-5>
+                        <p><b>{{ registro.emision }}</b></p>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row >
+                    <ion-col text-right col-4>
+                        <p>Monto :</p>
+                    </ion-col>
+                    <ion-col text-left col-5>
+                        <p><b>${{ registro.totaldocumento | number:0 }}</b></p>
+                    </ion-col>
+                </ion-row>
+                
+                <ion-row>
+                    <ion-col text-right col-4>
+                        <p>Bod. (<b>{{ registro.bodega }}</b>) :</p> 
+                    </ion-col>
+                    <ion-col text-left col-6>
+                        <p><b>{{ registro.nombrebodega }}</b></p> 
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col text-right col-3>
+                        <p>Cantidad :</p> 
+                    </ion-col>
+                    <ion-col text-center col-3>
+                        <p><b> {{ registro.cantidad }} </b></p> 
+                    </ion-col>
+                    <ion-col text-right col-3>
+                        <p>Unit.:</p> 
+                    </ion-col>
+                    <ion-col text-left col-3>
+                        <p><b> ${{ registro.unitarioneto | number:0 }} </b></p> 
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col text-left col-4>
+                        <p>Neto total :</p> 
+                    </ion-col>
+                    <ion-col>
+                        <p><b> {{ registro.netototal | number:0 }} </b></p> 
+                    </ion-col>
+                </ion-row>
+
+            </ion-card-content>
+                
+        </ion-card>
+            
+        </ion-item>
+
+    </ion-list>
+    
+</ion-content>
+    
